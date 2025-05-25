@@ -1,0 +1,37 @@
+.page-title {
+  text-align: center;
+  margin-top: 60px;
+  font-weight: bold;
+}
+.form-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 20px;
+}
+.form-register .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+}
+.form-register .form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+.form-register .form-group input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-register button {
+  padding: 10px 20px;
+  background: #E3D2EC;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.form-register button:hover {
+  background-color: #cc0000;
+}
