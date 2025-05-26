@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\neji3\\Desktop\\projet\\Obsidian\\Obsidian.csproj": {}
+    "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\Obsidian.csproj": {}
   },
   "projects": {
-    "C:\\Users\\neji3\\Desktop\\projet\\Obsidian\\Obsidian.csproj": {
+    "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\Obsidian.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\neji3\\Desktop\\projet\\Obsidian\\Obsidian.csproj",
+        "projectUniqueName": "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\Obsidian.csproj",
         "projectName": "Obsidian",
-        "projectPath": "C:\\Users\\neji3\\Desktop\\projet\\Obsidian\\Obsidian.csproj",
+        "projectPath": "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\Obsidian.csproj",
         "packagesPath": "C:\\Users\\neji3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\neji3\\Desktop\\projet\\Obsidian\\obj\\",
+        "outputPath": "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\neji3\\AppData\\Roaming\\NuGet\\NuGet.Config"

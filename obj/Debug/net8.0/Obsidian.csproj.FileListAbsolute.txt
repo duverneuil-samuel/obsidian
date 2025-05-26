@@ -146,3 +146,4 @@ C:\Users\neji3\Desktop\projet\obsidian\bin\Debug\net8.0\MySqlConnector.dll
 C:\Users\neji3\Desktop\projet\obsidian\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\neji3\Desktop\projet\obsidian\bin\Debug\net8.0\DotNetEnv.dll
 C:\Users\neji3\Desktop\projet\obsidian\bin\Debug\net8.0\Sprache.dll
+C:\Users\neji3\Desktop\projet\obsidian\obj\Debug\net8.0\Obsidian.sourcelink.json

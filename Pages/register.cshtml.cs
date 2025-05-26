@@ -1,9 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using Obsidian.Models;
 
 public class RegisterModel : PageModel
 {
+     private readonly AppDbContext _context;
+     public RegisterModel(AppDbContext context)
+    {
+        _context = context;
+    }
+
     [BindProperty]
     public InputModel Input { get; set; }
 
@@ -36,8 +43,17 @@ public class RegisterModel : PageModel
             return Page();
         }
 
-        // TODO : enregistrer l'utilisateur (base de données, etc.)
+        
+        var user = new User
+        {
+            Name = Input.Username,
+            Email = Input.Email,
+            PasswordHash = Input.Password 
+        };
 
-        return RedirectToPage("/Connexion");
+        _context.Users.Add(user);
+        _context.SaveChanges();
+
+        return RedirectToPage("/Index");
     }
 }
