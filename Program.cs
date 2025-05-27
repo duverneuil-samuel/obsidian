@@ -5,13 +5,13 @@
 
 using Microsoft.EntityFrameworkCore;
 using Obsidian.Models; 
-using DotNetEnv;
+//using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Env.Load();
+//Env.Load();
 
-var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
 
 builder.Services.AddRazorPages();
 
