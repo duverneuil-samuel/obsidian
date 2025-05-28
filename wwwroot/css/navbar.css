@@ -40,29 +40,32 @@
 .navbar .btn:hover {
   background: #8c62b2;
 }
-.navbar .flag {
-  width: 24px;
-  height: auto;
-  border-radius: 3px;
-}
-.navbar .dark-toggle {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  color: #F9FAFB;
-  cursor: pointer;
-}
 @media (max-width: 768px) {
-  .navbar .navbar {
+  .navbar {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  .navbar .navbar-left,
+  .navbar .logo {
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+  }
+  .navbar .navbar-left {
+    justify-content: center;
+    width: 100%;
+  }
   .navbar .navbar-center,
   .navbar .navbar-right {
     width: 100%;
     justify-content: space-between;
+  }
+  .navbar .btn {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
+  }
+  .navbar > * + * {
+    margin-top: 0.8rem;
   }
 }
 .search-container {
@@ -71,7 +74,6 @@
   display: flex;
   align-items: center;
 }
-/* Barre de recherche */
 .search-box {
   width: 100%;
   padding: 10px 40px 10px 15px;
@@ -84,7 +86,6 @@
   border-color: #4285f4;
   box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
 }
-/* Bouton de recherche */
 .search-btn {
   background: transparent;
   border: none;

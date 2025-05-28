@@ -53,32 +53,34 @@
     }
   }
 
-  .flag {
-    width: 24px;
-    height: auto;
-    border-radius: 3px;
-  }
-
-  .dark-toggle {
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-    color: @white;
-    cursor: pointer;
-  }
-
   @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .logo {
+      height: 40px;
+      margin: 0 auto; 
+      display: block;
     }
 
-    .navbar-left,
+    .navbar-left{
+      justify-content: center;
+      width: 100%;
+    }
     .navbar-center,
     .navbar-right {
       width: 100%;
       justify-content: space-between;
+    }
+
+    .btn {
+      padding: 0.3rem 0.7rem; 
+      font-size: 0.9rem;
+    }
+
+    & > * + * {
+      margin-top: 0.8rem;
     }
   }
 }

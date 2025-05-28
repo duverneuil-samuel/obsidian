@@ -5,8 +5,8 @@ using Obsidian.Models;
 
 public class RegisterModel : PageModel
 {
-     private readonly AppDbContext _context;
-     public RegisterModel(AppDbContext context)
+    private readonly AppDbContext _context;
+    public RegisterModel(AppDbContext context)
     {
         _context = context;
     }
@@ -43,12 +43,12 @@ public class RegisterModel : PageModel
             return Page();
         }
 
-        
+
         var user = new User
         {
             Name = Input.Username,
             Email = Input.Email,
-            PasswordHash = Input.Password 
+            PasswordHash = Input.Password
         };
 
         _context.Users.Add(user);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7iowKxnH5nHcGbEyXAFtjmdj1ESrXrIwjdYC12XdVU8=",
+  "Hash": "Kz2Buw72FFa6KkgMJtgRSpZpwsq6zyd2f0GUyZrsAZI=",
   "Source": "Obsidian",
   "BasePath": "_content/Obsidian",
   "Mode": "Default",
@@ -319,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\wwwroot\\js\\product.js",
+      "SourceId": "Obsidian",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\wwwroot\\",
+      "BasePath": "_content/Obsidian",
+      "RelativePath": "js/product.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\product.js"
     },
     {
       "Identity": "C:\\Users\\neji3\\Desktop\\projet\\obsidian\\wwwroot\\js\\site.js",
