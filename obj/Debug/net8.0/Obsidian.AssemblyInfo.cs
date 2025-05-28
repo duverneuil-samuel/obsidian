@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Obsidian")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d61e87d527feb5916044d78adae1f71e3d2b2f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3bc47226c994e0beb9f4e974810da1388874c1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Obsidian")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Obsidian")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

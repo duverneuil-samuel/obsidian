@@ -5,10 +5,11 @@ using Obsidian.Models;
 
 public class RegisterModel : PageModel
 {
-    private readonly AppDbContext _context;
-    public RegisterModel(AppDbContext context)
+    //private readonly AppDbContext _context;
+    public RegisterModel(/*AppDbContext context*/)
     {
-        _context = context;
+         // a remetre quan don aura bien relier la db
+       // _context = context;
     }
 
     [BindProperty]
@@ -43,16 +44,16 @@ public class RegisterModel : PageModel
             return Page();
         }
 
+        // a remetre quan don aura bien relier la db
+        // var user = new User
+        // {
+        //     Name = Input.Username,
+        //     Email = Input.Email,
+        //     PasswordHash = Input.Password
+        // };
 
-        var user = new User
-        {
-            Name = Input.Username,
-            Email = Input.Email,
-            PasswordHash = Input.Password
-        };
-
-        _context.Users.Add(user);
-        _context.SaveChanges();
+        // _context.Users.Add(user);
+        // _context.SaveChanges();
 
         return RedirectToPage("/Index");
     }

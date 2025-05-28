@@ -5,18 +5,18 @@
 
 using Microsoft.EntityFrameworkCore;
 using Obsidian.Models; 
-//using DotNetEnv;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Env.Load();
+Env.Load();
 
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
 
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 
