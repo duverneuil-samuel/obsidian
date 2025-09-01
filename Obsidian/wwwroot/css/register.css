@@ -1,37 +1,45 @@
-.page-title {
+.register {
+  margin-right: auto;
+  margin-left: auto;
+  width: 380px;
+  border-radius: 6px;
+  background-color: #381D37;
+  padding-bottom: 20px;
+}
+.register .page-title {
   text-align: center;
   margin-top: 60px;
   font-weight: bold;
+  color: #381D37;
 }
-.form-register {
+.register .form-register {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
   gap: 20px;
 }
-.form-register .form-group {
+.register .form-register .form-group {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 300px;
 }
-.form-register .form-group label {
+.register .form-register .form-group label {
   margin-bottom: 6px;
   font-weight: bold;
+  color: #381D37;
 }
-.form-register .form-group input {
+.register .form-register .form-group input {
+  background-color: #F9FAFB;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.form-register button {
+.register .form-register button {
   padding: 10px 20px;
   background: #E3D2EC;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-}
-.form-register button:hover {
-  background-color: #cc0000;
 }
