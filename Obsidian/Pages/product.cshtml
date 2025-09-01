@@ -1,0 +1,96 @@
+@page
+@model ProductModel
+@{
+    ViewData["Title"] = "Détails produit";
+}
+<link rel="stylesheet" href="@(Url.Content("~/css/product.css"))" />
+<h1 class="product-title">@Model.ProductName</h1>
+
+<div class="product-header">
+    <div class="product-image">
+        <img src="@Model.ImageUrl" alt="Image produit" />
+    </div>
+    <div class="product-chart">
+        <canvas id="priceChart"></canvas>
+    </div>
+</div>
+
+<div class="d-flex flex-row justify-content-between">
+    <div class="product-filters">
+        <form method="get">
+            <div class="filtre-item">
+                <label for="prixMax">Prix max :</label>
+                <input type="number" id="MaxPrice" name="MaxPrice" min="0" step="0.01" value="@Model.MaxPrice" />
+            </div>
+
+            <div class="filtre-item">
+                <label for="langue">Langue :</label>
+                <select id="Language" name="Language">
+                    <option value="">Toutes</option>
+                    <option>Français</option>
+                    <option>Anglais</option>
+                </select>
+            </div>
+
+            <div class="filtre-item">
+                <label for="etat">État :</label>
+                <select id="Condition" name="Condition">
+                    <option value="">Tous</option>
+                    <option>Neuf</option>
+                    <option>Comme neuf</option>
+                    <option>Bon</option>
+                    <option>Neutre</option>
+                    <option>Mauvais</option>
+                    <option>Très mauvais</option>
+                </select>
+            </div>
+
+            <button type="submit" class="filtre-btn">Valider</button>
+        </form>
+    </div>
+
+    <div class="product-offers">
+        <h2>Offres disponibles</h2>
+        @if (Model.OffresFiltrees != null && Model.OffresFiltrees.Any())
+        {
+            int index = 0;
+            foreach (var offre in Model.OffresFiltrees)
+            {
+                var hidden = index >= 4 ? "d-none extra-offre" : "";
+
+                <div class="offer d-flex justify-content-between @hidden">
+                    <div>
+                        <p><strong>Vendeur :</strong> @offre.Seller (@offre.Pays)</p>
+                        <p><strong>État :</strong> @offre.Condition</p>
+                        <p><strong>Langue :</strong> @offre.Language</p>
+                        <p><strong>Prix :</strong> @offre.Price €</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <label>Quantité :</label>
+                        <select>
+                            @for (int i = 1; i <= offre.Quantity; i++)
+                            {
+                                <option>@i</option>
+                            }
+                        </select>
+                        <button class="btn-panier">Ajouter au panier</button>
+                    </div>
+                </div>
+                index++;
+            }
+            if (Model.OffresFiltrees.Count() > 4)
+            {
+                <button id="showMoreBtn" class="btn btn-outline-primary mt-3">Afficher plus</button>
+            }
+        }
+        else
+        {
+            <p>Aucune offre ne correspond aux filtres.</p>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/product.js" asp-append-version="true"></script>
+}

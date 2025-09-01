@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <div class="navbar-left">
+        <a asp-page="/Index">
+            <img src="/img/logo.png" alt="Logo Obsidian" class="logo" />
+        </a>
+    </div>
+
+    <div class="navbar-center">
+        <select class="user-select">
+            <option>User</option>
+            <option>Product</option>
+        </select>
+        <div class="search-container"></div>
+        <input type="text" placeholder="rechercher un.e membre" class="search-box" />
+        <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+        </button>
+    </div>
+
+    </div>
+
+    <div class="navbar-right">
+        <a asp-page="/login" class="btn">Connexion</a>
+        <a asp-page="/register" class="btn">Inscription</a>
+        @* <img src="/img/flag-fr.svg" alt="FR" class="flag" />
+        <button class="dark-toggle" alt="activate darkmode">
+            <i class="fa-solid fa-moon"></i>
+        </button> *@
+        <a asp-page="/Product" class="btn-navbar">Produit</a>
+        <a asp-page="/ShoppingItem " class="btn" >Panier 🛒</a>
+    </div>
+</nav>

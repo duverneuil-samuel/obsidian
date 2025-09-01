@@ -1,0 +1,63 @@
+@page
+@model ShoppingModel
+@{
+    <link rel="stylesheet" href="~/css/ShoppingItem.css" />
+    ViewData["Title"] = "Votre panier";
+}
+
+<h1 class="text-center">Panier</h1>
+
+@if (Model.Panier.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Vendeur</th>
+                <th>État</th>
+                <th>Langue</th>
+                <th>Prix Unitaire</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Panier.Count; i++)
+            {
+                var item = Model.Panier[i];
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Seller</td>
+                    <td>@item.Condition</td>
+                    <td>@item.Language</td>
+                    <td>@item.Price €</td>
+                    <td>
+                        <form method="post" asp-page-handler="UpdateQuantite">
+                            <input type="hidden" name="Index" value="@i" />
+                            <input type="number" name="Quantite" value="@item.Quantity" min="1" class="form-control"
+                                style="width: 80px;" />
+                            <button type="submit" class="btn btn-sm btn-primary mt-1">Modifier</button>
+                        </form>
+                    </td>
+                    <td>@(item.Price* item.Quantity) €</td>
+                    <td>
+                        <form method="post" asp-page-handler="Supprimer">
+                            <input type="hidden" name="Index" value="@i" />
+                            <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3 class="text-end">Total général : <strong>@Model.Panier.Sum(p => p.Price * p.Quantity) €</strong></h3>
+    <div class="text-end">
+        <a href="/Paiement" class="btn btn-success">Passer à la caisse</a>
+    </div>
+}
+else
+{
+    <p>Votre panier est vide.</p>
+}

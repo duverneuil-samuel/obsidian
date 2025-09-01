@@ -1,0 +1,78 @@
+﻿@page
+@model IndexModel
+@{
+
+    ViewData["Title"] = "Accueil";
+}
+<link rel="stylesheet" href="@(Url.Content("~/css/Index.css"))" />
+<div class="page-wrapper">
+    <div class="double-feature">
+        <div class="feature-card teste">
+            <img src="~/images/produit-selectionne.jpg" alt="Produit sélectionné" />
+            <h3>Produit sélectionné</h3>
+            <a href="/DetailsProduit" class="btn">Voir</a>
+        </div>
+        <div class="feature-card">
+            <img src="~/images/carte-vedette.jpg" alt="Carte la plus vendue" />
+            <h3>Carte la plus vendue</h3>
+            <a href="/DetailsCarte" class="btn">Voir</a>
+        </div>
+    </div>
+
+    <hr class="black-divider" />
+
+    <div class="top-cards-container">
+        <h2>Top 5 cartes les plus vendues</h2>
+        <div class="card-list">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <div class="card-item">
+                    <img src="~/images/carte@i.jpg" alt="Carte @i" />
+                    <p class="card-name">Carte @i</p>
+                    <p class="card-price">@(10 + i),00 €</p>
+                </div>
+            }
+        </div>
+        <div class="view-all-btn">
+            <a href="/Cartes" class="btn">Voir toutes les cartes</a>
+        </div>
+    </div>
+
+    <hr class="black-divider" />
+
+    <div class="top-cards-container">
+        <h2>Top 5 Produits les plus vendus</h2>
+        <div class="card-list">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <div class="card-item">
+                    <img src="~/images/produit@i.jpg" alt="Produit @i" />
+                    <p class="card-name">Produit @i</p>
+                    <p class="card-price">@(19 + i),90 €</p>
+                </div>
+            }
+        </div>
+        <div class="view-all-btn">
+            <a href="/Produits" class="btn">Voir tous les produits</a>
+        </div>
+    </div>
+
+    <hr class="black-divider" />
+
+    <div class="top-cards-container">
+        <h2>Top 5 Produits annexes</h2>
+        <div class="card-list">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <div class="card-item">
+                    <img src="~/images/annexe@i.jpg" alt="Produit Annexe @i" />
+                    <p class="card-name">Produit Annexe @i</p>
+                    <p class="card-price">@(5 + i),50 €</p>
+                </div>
+            }
+        </div>
+        <div class="view-all-btn">
+            <a href="/ProduitsAnnexes" class="btn">Voir les produits annexes</a>
+        </div>
+    </div>
+</div>
