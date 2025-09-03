@@ -36,6 +36,8 @@
   border-radius: 6px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
 .navbar .btn:hover {
   background: #8c62b2;
