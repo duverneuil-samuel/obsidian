@@ -12,6 +12,16 @@ public class ShoppingModel : PageModel
         {
             Panier = tempPanier;
         }
+         else
+    {
+        // ✅ Simulation de données factices
+        Panier = new List<ShoppingItem>
+        {
+            new ShoppingItem { ProductName = "Clavier mécanique", Seller = "Sam", Condition = "Neuf", Language = "FR", Price = 89.99m, Quantity = 1 },
+            new ShoppingItem { ProductName = "Souris gaming", Seller = "Lucie", Condition = "Occasion", Language = "EN", Price = 49.50m, Quantity = 2 },
+            new ShoppingItem { ProductName = "Tapis de souris XXL", Seller = "Jean", Condition = "Neuf", Language = "FR", Price = 25m, Quantity = 1 }
+        };
+    }
     }
 
     public IActionResult OnPostUpdateQuantite(int Index, int Quantite)
