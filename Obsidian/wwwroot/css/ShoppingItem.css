@@ -1,48 +1,48 @@
-.empty {
+.shopping-page .empty {
   text-align: center;
   font-weight: bolder;
   padding: 3rem 0;
 }
-h1 {
+.shopping-page h1 {
   margin: 1.5rem 0;
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
   color: #381D37;
 }
-.table {
+.shopping-page .table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
-.table thead {
+.shopping-page .table thead {
   background: #381D37;
   color: #F9FAFB;
 }
-.table thead th {
+.shopping-page .table thead th {
   padding: 0.8rem;
   text-align: left;
   font-weight: 600;
   border-bottom: 2px solid #E3D2EC;
 }
-.table tbody tr {
+.shopping-page .table tbody tr {
   background: #F9FAFB;
 }
-.table tbody tr:nth-child(even) {
+.shopping-page .table tbody tr:nth-child(even) {
   background: #f2eef7;
 }
-.table tbody tr:hover {
+.shopping-page .table tbody tr:hover {
   background: #9c89f4;
 }
-.table tbody tr td {
+.shopping-page .table tbody tr td {
   padding: 0.7rem;
   border-bottom: 1px solid #E3D2EC;
   color: #381D37;
   vertical-align: middle;
 }
-.btn,
-.btn-nav,
-.btn-navbar {
+.shopping-page .btn,
+.shopping-page .btn-nav,
+.shopping-page .btn-navbar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -53,28 +53,28 @@ h1 {
   color: #F9FAFB;
   transition: background 0.2s ease;
 }
-.btn-primary {
+.shopping-page .btn-primary {
   background: #856DF2;
 }
-.btn-primary:hover {
+.shopping-page .btn-primary:hover {
   background: #6e51ef;
 }
-.btn-danger {
+.shopping-page .btn-danger {
   background: #6e55ba;
 }
-.btn-danger:hover {
+.shopping-page .btn-danger:hover {
   filter: brightness(0.95);
 }
-.btn-success {
+.shopping-page .btn-success {
   background: #381D37;
 }
-.btn-success:hover {
+.shopping-page .btn-success:hover {
   background: #492648;
 }
-.text-end {
+.shopping-page .text-end {
   text-align: right;
 }
-.empty {
+.shopping-page .empty {
   text-align: center;
   color: rgba(56, 29, 55, 0.6);
   margin-top: 2rem;
