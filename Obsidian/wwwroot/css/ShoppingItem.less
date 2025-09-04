@@ -1,5 +1,73 @@
+
+@light-purple: #E3D2EC;
+@dark-purple:  #381D37;
+@white:        #F9FAFB;
+@blue:         #856DF2;
+
+@row-even-bg:  mix(@light-purple, @white, 30%);
+@row-hover-bg: mix(@blue, @white, 80%);
+
 .empty{
     text-align: center;
     font-weight: bolder;
     padding: 3rem 0;
+} 
+
+h1 {
+  margin: 1.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: @dark-purple;
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  thead {
+    background: @dark-purple;
+    color: @white;
+
+    th {
+      padding: .8rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid @light-purple;
+    }
+  }
+
+  tbody tr {
+    background: @white;
+    &:nth-child(even) { background: @row-even-bg; }
+    &:hover { background: @row-hover-bg; }
+
+    td {
+      padding: .7rem;
+      border-bottom: 1px solid @light-purple;
+      color: @dark-purple;
+      vertical-align: middle;
+    }
+  }
+}
+
+.btn, .btn-nav, .btn-navbar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .35rem .8rem;
+  font-size: .9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: @white;
+  transition: background .2s ease;
+}
+
+
+.btn-primary  { background: @blue;        &:hover { background: darken(@blue, 6%); } }
+.btn-danger   { background: mix(@dark-purple, @blue, 30%); &:hover { filter: brightness(.95); } }
+.btn-success  { background: @dark-purple; &:hover { background: lighten(@dark-purple, 5%); } }
+
+.text-end { text-align: right; }
+.empty    { text-align: center; color: fade(@dark-purple, 60%); margin-top: 2rem; }
