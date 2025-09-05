@@ -35,15 +35,16 @@
                         <td>@item.Price €</td>
                         <td>
                             <form method="post" asp-page-handler="UpdateQuantite">
+                                @Html.AntiForgeryToken()
                                 <input type="hidden" name="Index" value="@i" />
-                                <input type="number" name="Quantite" value="@item.Quantity" min="1" class="form-control"
-                                    style="width: 80px;" />
+                                <input type="number" name="Quantite" value="@item.Quantity" min="1" class="form-control"style="width: 80px;" />
                                 <button type="submit" class="btn btn-sm btn-primary mt-1">Modifier</button>
                             </form>
                         </td>
                         <td>@(item.Price* item.Quantity) €</td>
                         <td>
                             <form method="post" asp-page-handler="Supprimer">
+                                @Html.AntiForgeryToken()
                                 <input type="hidden" name="Index" value="@i" />
                                 <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                             </form>

@@ -15,6 +15,20 @@ var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__De
 
 builder.Services.AddRazorPages();
 
+
+
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Durée de vie panier
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
+
+
 // builder.Services.AddDbContext<AppDbContext>(options =>
 //     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -38,3 +52,5 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+app.UseSession();
