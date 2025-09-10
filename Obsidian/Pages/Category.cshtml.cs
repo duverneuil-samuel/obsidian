@@ -1,30 +1,41 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
+using Obsidian.Models; 
 
-public class CategoryModel : PageModel
+namespace Obsidian.Pages
 {
-    public string CategoryName { get; set; }
-    public string CategoryDescription { get; set; }
-    public List<Product> Products { get; set; }
-
-    public void OnGet()
+    public class CategoryModel : PageModel
     {
-        CategoryName = "Catégorie Exemple";
-        CategoryDescription = "Description de la catégorie.";
-        Products = new List<Product>
-        {
-            new Product { Id = 1, Name = "Produit A", Price = 19.99, ImageUrl="/images/a.png", StockStatus="in-stock", StockText="En stock" },
-            new Product { Id = 2, Name = "Produit B", Price = 9.99, ImageUrl="/images/b.png", StockStatus="low-stock", StockText="Stock faible" }
-        };
-    }
-}
+        private readonly AppDbContext _context;
 
-public class Product
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public double Price { get; set; }
-    public string ImageUrl { get; set; }
-    public string StockStatus { get; set; }
-    public string StockText { get; set; }
+        public CategoryModel(AppDbContext context)
+        {
+            _context = context;
+        }
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
+        public List<Product> Products { get; set; }
+        public int CategoryId { get; set; }
+
+        public void OnGet(int? categoryId)
+        {
+            if (categoryId.HasValue)
+            {
+                CategoryId = categoryId.Value;
+
+                var category = _context.Categories
+                                       .FirstOrDefault(c => c.Id == CategoryId);
+
+                if (category != null)
+                {
+                    CategoryName = category.Name;
+                    CategoryDescription = category.Description;
+
+                    Products = _context.Products
+                                       .Where(p => p.CategoryId == CategoryId)
+                                       .ToList();
+                }
+            }
+        }
+    }
+
 }

@@ -9,7 +9,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
-    public DbSet<Card> Cards { get; set; }
+    public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Offer> Offers { get; set; }
     public DbSet<Order> Orders { get; set; }

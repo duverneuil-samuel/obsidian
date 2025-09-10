@@ -3,80 +3,71 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using Obsidian.Extensions;
 using Obsidian.Models;
-public class ShoppingModel : PageModel
+using Microsoft.EntityFrameworkCore;
+
+
+namespace Obsidian.Pages
 {
-    public List<ShoppingItem> Panier { get; set; } = new();
-
-    public void OnGet()
+    public class ShoppingModel : PageModel
     {
-        // Panier = HttpContext.Session.GetObject<List<ShoppingItem>>("Panier") ?? new List<ShoppingItem>();
-        Panier = HttpContext.Session.GetObject<List<ShoppingItem>>("Panier");
+        private readonly AppDbContext _context;
 
-        // Exemple a remplacé par bdd
-        // if (TempData["Panier"] is List<ShoppingItem> tempPanier)
-        if (Panier == null || !Panier.Any())
+        public ShoppingModel(AppDbContext context)
         {
-            // Panier = tempPanier;
-            
-            
-        // }
-        // else
-        // {
-            // ✅ Simulation de données factices
-            Panier = new List<ShoppingItem>
-        {
-            new ShoppingItem { ProductName = "Clavier mécanique", Seller = "Sam", Condition = "Neuf", Language = "FR", Price = 89.99m, Quantity = 1 },
-            new ShoppingItem { ProductName = "Souris gaming", Seller = "Lucie", Condition = "Occasion", Language = "EN", Price = 49.50m, Quantity = 2 },
-            new ShoppingItem { ProductName = "Tapis de souris XXL", Seller = "Jean", Condition = "Neuf", Language = "FR", Price = 25m, Quantity = 1 }
-        };
-            HttpContext.Session.SetObject("Panier", Panier);
+            _context = context;
         }
-    }
-
-
-     public IActionResult OnPostUpdateQuantite(int Index, int Quantite)
-    {
-        var panier = HttpContext.Session.GetObject<List<ShoppingItem>>("Panier") ?? new List<ShoppingItem>();
-
-        if (Index >= 0 && Index < panier.Count)
+        public List<ShoppingItem> Panier { get; set; } = new();
+        public decimal Total { get; set; }
+        public void OnGet(int? userId)
         {
-            panier[Index].Quantity = Quantite;
+            if (userId.HasValue)
+            {
+                var orderLines = _context.OrderLines
+                                         .Include(ol => ol.Offer)
+                                         .ThenInclude(o => o.Product)
+                                         .Include(ol => ol.Order)
+                                         .Where(ol => ol.Order.BuyerId == userId && ol.Order.Status == "Cart")
+                                         .ToList();
+
+                Panier = orderLines.Select(ol => new ShoppingItem
+                {
+                    ProductName = ol.Offer.Product.Name,
+                    Seller = ol.Offer.Seller.Name,
+                    Condition = ol.Offer.Condition,
+                    Language = ol.Offer.Language,
+                    Price = ol.UnitPrice,
+                    Quantity = ol.Quantity
+                }).ToList();
+
+                Total = Panier.Sum(i => i.Quantity * i.Price);
+            }
         }
 
-        HttpContext.Session.SetObject("Panier", panier);
-        return RedirectToPage();
-    }
 
-    public IActionResult OnPostSupprimer(int Index)
-    {
-        var panier = HttpContext.Session.GetObject<List<ShoppingItem>>("Panier") ?? new List<ShoppingItem>();
-
-        if (Index >= 0 && Index < panier.Count)
+        public IActionResult OnPostUpdateQuantite(int Index, int Quantite)
         {
-            panier.RemoveAt(Index);
+            var panier = HttpContext.Session.GetObject<List<ShoppingItem>>("Panier") ?? new List<ShoppingItem>();
+
+            if (Index >= 0 && Index < panier.Count)
+            {
+                panier[Index].Quantity = Quantite;
+            }
+
+            HttpContext.Session.SetObject("Panier", panier);
+            return RedirectToPage();
         }
 
-        HttpContext.Session.SetObject("Panier", panier);
-        return RedirectToPage();
+        public IActionResult OnPostSupprimer(int Index)
+        {
+            var panier = HttpContext.Session.GetObject<List<ShoppingItem>>("Panier") ?? new List<ShoppingItem>();
+
+            if (Index >= 0 && Index < panier.Count)
+            {
+                panier.RemoveAt(Index);
+            }
+
+            HttpContext.Session.SetObject("Panier", panier);
+            return RedirectToPage();
+        }
     }
-
-    // public IActionResult OnPostUpdateQuantite(int Index, int Quantite)
-    // {
-    //     if (TempData["Panier"] is List<ShoppingItem> panier)
-    //     {
-    //         panier[Index].Quantity = Quantite;
-    //         TempData["Panier"] = panier;
-    //     }
-    //     return RedirectToPage();
-    // }
-
-    // public IActionResult OnPostSupprimer(int Index)
-    // {
-    //     if (TempData["Panier"] is List<ShoppingItem> panier)
-    //     {
-    //         panier.RemoveAt(Index);
-    //         TempData["Panier"] = panier;
-    //     }
-    //     return RedirectToPage();
-    // }
 }

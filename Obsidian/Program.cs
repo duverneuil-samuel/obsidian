@@ -1,8 +1,3 @@
-// var builder = WebApplication.CreateBuilder(args);
-
-// // Add services to the container.
-// builder.Services.AddRazorPages();
-
 using Microsoft.EntityFrameworkCore;
 using Obsidian.Models; 
 using DotNetEnv;
@@ -10,27 +5,22 @@ using DotNetEnv;
 var builder = WebApplication.CreateBuilder(args);
 
 Env.Load();
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
-var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
+// var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
 
 builder.Services.AddRazorPages();
-
-
-
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // Durée de vie panier
+    options.IdleTimeout = TimeSpan.FromMinutes(30); 
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
 
-
-
-
-// builder.Services.AddDbContext<AppDbContext>(options =>
-//     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+ builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 

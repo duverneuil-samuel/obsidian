@@ -8,6 +8,6 @@ public class User
     public bool IsAdmin { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public ICollection<Offer> Offers { get; set; }
-    public ICollection<Order> Orders { get; set; }
+    public ICollection<Offer> Offers { get; set; } = new List<Offer>();
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }
