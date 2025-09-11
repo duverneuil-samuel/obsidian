@@ -1,6 +1,8 @@
 @page "{name?}"
 @model Obsidian.Pages.CategoryModel
 
+<link rel="stylesheet" href="@(Url.Content("~/css/Category.css"))" />
+
 <div class="category-partial">
     <div class="category-header">
         <h1 class="category-title">@Model.CategoryName</h1>
