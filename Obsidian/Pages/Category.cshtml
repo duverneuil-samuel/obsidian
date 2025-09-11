@@ -31,7 +31,7 @@
     <div class="products-grid" id="products-container">
         @foreach (var product in Model.Products)
         {
-            <a asp-page="/Product" asp-route-id="@product.Id" class=product-card-link">
+            <a asp-page="/Product" asp-route-id="@product.Id" class="product-card-link">
                 <div class="product-card" data-product-id="@product.Id">
                     <img src="@product.ImageUrl" alt="@product.Name" class="product-image">
                     <div class="product-info">
