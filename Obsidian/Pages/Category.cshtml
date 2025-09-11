@@ -8,12 +8,12 @@
         <h1 class="category-title">@Model.CategoryName</h1>
         <p class="category-description">@Model.CategoryDescription</p>
     </div>
-    
+
     <div class="filters">
         <div class="sort-dropdown">
             <button class="sort-button">
                 <i class="fas fa-sort"></i>
-                Trier par 
+                Trier par
             </button>
             <div class="dropdown-content" id="sortDropdown">
                 <a href="#" data-sort="alpha-asc">Alphabétique (A-Z)</a>
@@ -22,7 +22,7 @@
                 <a href="#" data-sort="price-desc">Prix décroissant</a>
             </div>
         </div>
-        
+
         <div class="product-count">
             <span id="product-count">@Model.Products.Count</span> produits trouvés
         </div>
@@ -31,16 +31,19 @@
     <div class="products-grid" id="products-container">
         @foreach (var product in Model.Products)
         {
-            <div class="product-card" data-product-id="@product.Id">
-                <img src="@product.ImageUrl" alt="@product.Name" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">@product.Name</h3>
-                    <div class="product-price">@product.Price.ToString("F2") €</div>
-                    <div class="product-stock @(product.StockStatus == "in-stock" ? "in-stock" : product.StockStatus == "low-stock" ? "low-stock" : "out-of-stock")">
-                        @product.StockText
+            <a asp-page="/Product" asp-route-id="@product.Id" class=product-card-link">
+                <div class="product-card" data-product-id="@product.Id">
+                    <img src="@product.ImageUrl" alt="@product.Name" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">@product.Name</h3>
+                        <div class="product-price">@product.Price.ToString("F2") €</div>
+                        <div
+                            class="product-stock @(product.StockStatus == "in-stock" ? "in-stock" : product.StockStatus == "low-stock" ? "low-stock" : "out-of-stock")">
+                            @product.StockText
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         }
     </div>
 </div>
