@@ -55,12 +55,12 @@ namespace Obsidian.Pages
                 ModelState.AddModelError(string.Empty, "email deja utilisé!");
             }
 
-            var PasswordHash = HashPassword(Input.Password);
+            var passwordHash = HashPassword(Input.Password);
             var user = new User
             {
                 Name = Input.Username,
                 Email = Input.Email,
-                PasswordHash = Input.Password,
+                PasswordHash = passwordHash,
                 IsAdmin = false,
                 Country = "FR",
                 CreatedAt = DateTime.UtcNow

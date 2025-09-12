@@ -1,3 +1,6 @@
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
 <nav class="navbar">
     <div class="navbar-left">
         <a asp-page="/Index">
@@ -20,8 +23,17 @@
     </div>
 
     <div class="navbar-right">
-        <a asp-page="/login" class="btn">Connexion</a>
-        <a asp-page="/register" class="btn">Inscription</a>
-        <a asp-page="/ShoppingItem" class="btn" >Panier 🛒</a>
+        @if (HttpContextAccessor.HttpContext.User.Identity?.IsAuthenticated ?? false)
+        {
+            <form method action="post" asp-page="/Logout" asp-route-returnUrl="@Context.Request.Path" style="display: inline;">
+                <button type="=" submit" class="btn"> Déconnexion</button>
+            </form>
+            <a asp-page="/ShoppingItem" class="btn">Panier 🛒</a>
+        }
+        else
+        {
+            <a asp-page="/login" class="btn">Connexion</a>
+            <a asp-page="/register" class="btn">Inscription</a>
+        }
     </div>
 </nav>
