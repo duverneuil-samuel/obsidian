@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using Obsidian.Models; 
+using Obsidian.Models;
 using DotNetEnv;
+using Microsoft.AspNetCore.DataProtection;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
 Env.Load();
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
-
-// var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__Default");
 
 builder.Services.AddRazorPages();
 
@@ -21,6 +21,19 @@ builder.Services.AddSession(options =>
 
  builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); 
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddDataProtection()
+       .PersistKeysToFileSystem(new DirectoryInfo("/tmp/dataprotection-keys"));
 
 var app = builder.Build();
 
