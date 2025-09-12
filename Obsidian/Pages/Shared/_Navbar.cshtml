@@ -25,9 +25,9 @@
     <div class="navbar-right">
         @if (HttpContextAccessor.HttpContext.User.Identity?.IsAuthenticated ?? false)
         {
-            <form method="post" asp-page="/Logout" asp-route-returnUrl="@Context.Request.Path" style="display:inline;">
+            @* <form method="post" asp-page="/Logout" asp-route-returnUrl="@Context.Request.Path" style="display:inline;">
                 <button type="submit" class="btn">Déconnexion</button>
-            </form>
+            </form> *@
 
             <a asp-page="/ShoppingItem" class="btn">Panier 🛒</a>
         }
